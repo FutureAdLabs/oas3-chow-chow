@@ -10,8 +10,20 @@ const options: Ajv.Options = {
 }
 
 export default function ajv(opts: Ajv.Options = {}) {
-  return new Ajv({
+  const ajv = new Ajv({
     ...options,
     ...opts
   })
+
+  const nullableKeywordDefinition: Ajv.KeywordDefinition = {
+    inline: require("../../lib/dotjs/nullable"),
+    errors: true,
+    // statements: true,
+    metaSchema: { type: 'boolean' }
+  }
+
+  ajv.addKeyword('nullable', nullableKeywordDefinition);
+  ajv.addKeyword('x-nullable', nullableKeywordDefinition);
+
+  return ajv
 }

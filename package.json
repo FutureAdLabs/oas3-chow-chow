@@ -6,6 +6,7 @@
   "author": "<tli@atlassian.com>",
   "license": "MIT",
   "scripts": {
+    "build": "node node_modules/ajv/scripts/compile-dots.js node_modules/ajv/lib lib",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "prepublishOnly": "rm -rf lib && tsc"
@@ -35,7 +36,9 @@
     "@types/jest": "^22.1.3",
     "@types/node": "^9.4.6",
     "@types/xregexp": "^3.0.29",
+    "dot": "^1.1.2",
     "jest": "^22.4.2",
+    "js-beautify": "^1.7.5",
     "ts-jest": "^22.4.0",
     "typescript": "^2.7.2"
   }

@@ -3,3 +3,6 @@
 /.vscode
 /lib
 .DS_store
+
+# Compiled templates
+lib/dotjs/*.js
