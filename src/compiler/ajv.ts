@@ -1,5 +1,9 @@
 import * as Ajv from 'ajv';
 
+interface ExtendedAjvKeywordDefinition extends Ajv.KeywordDefinition {
+  statements: boolean
+}
+
 const options: Ajv.Options = {
   /**
    * Ignore following formats for now because they are not supported by AJV by default.
@@ -15,10 +19,10 @@ export default function ajv(opts: Ajv.Options = {}) {
     ...opts
   })
 
-  const nullableKeywordDefinition: Ajv.KeywordDefinition = {
-    inline: require("../../lib/dotjs/nullable"),
+  const nullableKeywordDefinition: ExtendedAjvKeywordDefinition = {
+    inline: require("./../dotjs/nullable"),
     errors: true,
-    // statements: true,
+    statements: true,
     metaSchema: { type: 'boolean' }
   }
 
